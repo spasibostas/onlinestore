@@ -11,7 +11,7 @@ const Products = () => {
   const [sort, setSort] = useState('asc');
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 
-  const { data, loading, error } = useFetch(
+  const { data } = useFetch(
     `/sub-categories?[filters][categories][id][$eq]=${catId}`
   )
 

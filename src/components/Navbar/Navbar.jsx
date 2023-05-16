@@ -66,7 +66,6 @@ const Navbar = () => {
       <ProfileContext.Provider value={openProfile}>
         {openProfile && <Profile toggle={toggleProfile}/>}
       </ProfileContext.Provider>
-      {/* {openCart && <Cart />} */}
     </div>
   )
 }

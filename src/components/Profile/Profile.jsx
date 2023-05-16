@@ -52,24 +52,6 @@ export const Profile = ({ toggle }) => {
           </Space>
         </Space>
       );
-    
-
-//   return (
-//     <div className='profile'>
-//         <h1>Log in to your profile</h1>
-//         <div>
-//             <button className='loginBtn'>
-//                 <Link className='linkBtn' to='/login' onClick={toggle}>Sign in</Link> 
-//             </button>
-//         </div>
-//         <div className="signup">
-//             <span>Don't have an account yet?</span>
-//             <button>
-//                 <Link className='linkBtn' to='/signup' onClick={toggle}>Sign up</Link>
-//             </button>
-//         </div>
-//     </div>
-//   )
 }
 
 export default Profile
