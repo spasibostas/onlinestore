@@ -17,8 +17,10 @@ import { useAuthContext } from "../../context/AuthContext";
 import useScreenSize from "../../hooks/useScreenSize";
 import { API } from "../../constant";
 import { setToken } from "../../helpers";
+import './Login.scss'
 
 const SignIn = () => {
+
   const { isDesktopView } = useScreenSize();
   const navigate = useNavigate();
 
@@ -29,7 +31,9 @@ const SignIn = () => {
   const [error, setError] = useState("");
 
   const onFinish = async (values) => {
+
     setIsLoading(true);
+    
     try {
       const value = {
         identifier: values.email,
@@ -72,7 +76,7 @@ const SignIn = () => {
             {error ? (
               <Alert
                 className="alert_error"
-                message={error}
+                message='Invalid Email or password'
                 type="error"
                 closable
                 afterClose={() => setError("")}

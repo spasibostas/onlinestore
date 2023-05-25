@@ -17,6 +17,7 @@ import { useAuthContext } from "../../context/AuthContext";
 import useScreenSize from "../../hooks/useScreenSize";
 import { API } from "../../constant";
 import { setToken } from "../../helpers";
+import './SignUp.scss'
 
 const SignUp = () => {
 

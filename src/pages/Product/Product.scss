@@ -35,14 +35,23 @@
         flex-direction: column;
         gap: 30px;
 
-        .price{
-            font-size: 30px;
-            font-weight: 500;
-            color: #2879fe;
+        .prices{
+            display: flex;
+            gap: 20px;
+    
+            h3{
+                font-size: 24px;
+                font-weight: 500;
+    
+                &:first-child{
+                    color: gray;
+                    text-decoration: line-through;
+                }
+            }
         }
 
         p{
-            font-size: 18px;
+            font-size: 20px;
             font-weight: 300;
             text-align: justify;
         }
@@ -53,20 +62,23 @@
             gap: 10px;
 
             button{
-                width: 50px;
-                height: 50px;
+                width: 40px;
+                height: 40px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
                 border: none;
+                border-radius: 5px;
                 cursor: pointer;
             }
         }
 
         .add{
+            font-family: 'Oswald', sans-serif;
             color: white;
             background-color: #2879fe;
             border: none;
+            border-radius: 5px;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -95,7 +107,7 @@
             flex-direction: column;
             gap: 10px;
             color: gray;
-            font-size: 14px;
+            font-size: 16px;
             margin-top: 30px;
 
 

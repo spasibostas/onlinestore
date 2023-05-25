@@ -7,8 +7,8 @@ import Footer from './components/Footer/Footer';
 import Login from "./pages/Login/Login";
 import SignUp from "./pages/SignUp/SignUp";
 import UserProfile from "./pages/UserProfile/UserProfile";
+import Cart from "./pages/Cart/Cart";
 import { getToken } from "./helpers";
-import Basket from "./pages/Basket/Basket";
 import './app.scss'
 
 
@@ -41,7 +41,7 @@ const router = createBrowserRouter([
     },
     {
       path: "/basket",
-      element: <Basket />
+      element: <Cart />
     },
     {
       path: "/login",
