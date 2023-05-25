@@ -66,6 +66,12 @@
         "featured",
         "trending"
       ]
+    },
+    "priceTotal": {
+      "type": "decimal"
+    },
+    "quantity": {
+      "type": "decimal"
     }
   }
 }
