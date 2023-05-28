@@ -39,8 +39,13 @@
     }
     
     h2{
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
+        margin: 0;
+    }
+
+    span{
+        color: gray;
     }
 
     .prices{
@@ -52,6 +57,7 @@
             font-weight: 500;
 
             &:first-child{
+                font-weight: 300;
                 color: gray;
                 text-decoration: line-through;
             }

@@ -9,17 +9,17 @@ import { useDispatch } from 'react-redux'
 import './Product.scss'
 
 const Product = () => {
+
   const id = useParams().id;
   const [selectedImg, setSelectedImg] = useState("img");
-  const [quantity, setQuantity] = useState(1);
   
   const dispatch = useDispatch();
-  const { data, loading, error } = useFetch(`/products/${id}?populate=*`);
+  const { data, loading } = useFetch(`/products/${id}?populate=*`);
 
   return (
     <div className="product">
       {loading ? (
-        "loading"
+        "loading..."
       ) : (
         <>
           <div className="left">
@@ -27,12 +27,12 @@ const Product = () => {
               <img
                 src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img?.data?.attributes?.url}
                 alt=""
-                onClick={(e) => setSelectedImg("img")}
+                onClick={() => setSelectedImg("img")}
               />
               <img
                 src={process.env.REACT_APP_UPLOAD_URL + data?.attributes?.img2?.data?.attributes?.url}
                 alt=""
-                onClick={(e) => setSelectedImg("img2")}
+                onClick={() => setSelectedImg("img2")}
               />
             </div>
             <div className="mainImg">
@@ -41,28 +41,21 @@ const Product = () => {
           </div>
           <div className="right">
             <h1>{data?.attributes?.title}</h1>
-            <span className="price">${data?.attributes?.price}</span>
+            <div className='prices'>
+                <h3>${(data?.attributes?.price + 19.99).toFixed(2)}</h3>
+                <h3>${(data?.attributes?.price - 0.01).toFixed(2)}</h3>
+            </div>
             <p>
               {data?.attributes?.desc}
             </p>
-            <div className="quantity">
-              <button
-                onClick={() =>
-                  setQuantity((prev) => (prev === 1 ? 1 : prev - 1))
-                }
-              >
-                -
-              </button>
-              {quantity}
-              <button onClick={() => setQuantity((prev) => prev + 1)}>+</button>
-            </div>
             <button className="add" onClick={() => dispatch(addToCart({
               id: data.id,
               title: data.attributes.title,
               desc: data.attributes.desc,
               price: data.attributes.price,
+              priceTotal: data.attributes.priceTotal,
               img: data.attributes.img.data.attributes.url,
-              quantity
+              quantity: data.attributes.quantity,
             }))}>
               <AddShoppingCartIcon /> ADD TO CART
             </button>
@@ -75,9 +68,8 @@ const Product = () => {
               </div>
             </div>
             <div className="info">
-              <span>Vendor: Polo</span>
-              <span>Product Type: T-Shirt</span>
-              <span>Tag: T-Shirt, Women, Top</span>
+              <span>Product Type: {data?.attributes?.type}</span>
+              <span>Tag: {data?.attributes?.categories?.data[0].attributes.title}, {data?.attributes?.sub_categories.data[0].attributes.title}</span>
             </div>
             <hr />
             <div className="info">

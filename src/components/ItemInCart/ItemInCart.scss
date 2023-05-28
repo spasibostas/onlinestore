@@ -1,0 +1,63 @@
+.order{
+    margin-bottom: 40px;
+
+    .order-item{
+        display: flex;
+        gap: 20px;
+
+        img{
+            border-radius: 10px;
+            width: 200px;
+            height: 300px;
+        }
+
+        .delete-icon{
+            cursor: pointer;
+        }
+    }
+
+    .order-card{
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+
+        .order-item__title{
+            font-size: 20px;
+        }
+
+        .order-item__desc{
+            font-size: 16px;
+            color: gray;
+        }
+
+        .quantity{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            button{
+                width: 40px;
+                height: 40px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+
+        .order-item__price{
+           
+            h3{
+                font-size: 18px;
+                font-weight: 500;
+
+                &:first-child{
+                    text-decoration: line-through;
+                    color: gray;
+                }
+            }
+        }
+    }
+}

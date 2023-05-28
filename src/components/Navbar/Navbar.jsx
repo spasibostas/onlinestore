@@ -1,14 +1,11 @@
 import React, {useState} from 'react'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import SearchIcon from '@mui/icons-material/Search';
 import PersonOutlineOutlinedIcon from '@mui/icons-material/PersonOutlineOutlined';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import ShoppingCartOutlinedIcon from '@mui/icons-material/ShoppingCartOutlined';
 import {Link} from 'react-router-dom';
 import {useSelector} from 'react-redux'
-import Cart from '../Cart/Cart';
 import Profile from './../Profile/Profile';
-import Basket from '../../pages/Basket/Basket';
 import "./Navbar.scss"
 
 
@@ -35,13 +32,10 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className='item'>
-            <Link className='link' to='/products/1'>Women</Link>
+            <Link className='link' to='/products/1'>Men</Link>
           </div>
           <div className='item'>
-            <Link className='link' to='/products/2'>Men</Link>
-          </div>
-          <div className='item'>
-            <Link className='link' to='/products/3'>Children</Link>
+            <Link className='link' to='/products/2'>Women</Link>
           </div>
         </div>
         <div className='center'>
@@ -53,11 +47,10 @@ const Navbar = () => {
           <div className='item'><Link to='/' className='link'>Contact</Link></div>
           <div className='item'><Link to='/' className='link'>Stores</Link></div>
           <div className='icons'>
-            <SearchIcon />
-            <PersonOutlineOutlinedIcon className='profileIcon' onClick={() => setOpenProfile(!openProfile)}/>
             <FavoriteBorderOutlinedIcon />
-            <div className='cartIcon' onClick={() => setOpenCart(!openCart)}>
-            <Link className='link' to="/basket"><ShoppingCartOutlinedIcon /></Link>
+            <PersonOutlineOutlinedIcon className='profileIcon' onClick={() => setOpenProfile(!openProfile)}/>
+            <div className='cartIcon' >
+              <Link className='link' onClick={() => setOpenCart(!openCart)} to="/basket"><ShoppingCartOutlinedIcon /></Link>
               <span>{products.length}</span>
             </div>
           </div>
@@ -66,7 +59,6 @@ const Navbar = () => {
       <ProfileContext.Provider value={openProfile}>
         {openProfile && <Profile toggle={toggleProfile}/>}
       </ProfileContext.Provider>
-      {/* {openCart && <Cart />} */}
     </div>
   )
 }

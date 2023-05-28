@@ -9,7 +9,7 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
     (item) => `&[filters][sub_categories][id][$eq]=${item}`
 ).join('')
 
-  const { data, loading, error } = useFetch(
+  const { data, loading } = useFetch(
     `/products?populate=*&[filters][categories][id]=${catId}${filter}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`
   );
 

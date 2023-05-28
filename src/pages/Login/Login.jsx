@@ -1,113 +1,3 @@
-// import React, { useEffect, useState } from 'react'
-// import axios from 'axios'
-// import './Login.scss'
-
-
-// const Login = () => {
-
-//   const [error, setError] = useState('')
-
-//   const loginUser = () => {
-//     axios
-//       .post("http://localhost:1337/api/auth/local", {
-//         identifier: username,
-//         password: password,
-//       })
-//       .then((response) => {
-//         // Handle success.
-//         console.log("Well done!");
-//         console.log("User profile", response.data);
-//         console.log("User token", response.data.jwt);
-//       })
-//       .catch(error => {
-//         // Handle error.
-//         setError(error.response.data.error.message)
-//         console.log("An error occurred:", error.response.data.error.message);
-//       });
-//   };
-
-//   const [username, setUsername] = useState('')
-//   const [password, setPassword] = useState('')
-
-//   const [usernameDirty, setUsernameDirty] = useState(false)
-//   const [passwordDirty, setPasswordDirty] = useState(false)
-
-//   const [usernameError, setUsernameError] = useState('username не может быть пустым')
-//   const [passwordError, setPasswordError] = useState('password не может быть пустым')
-
-//   const [formValid, setFormValid] = useState(false)
-
-//   useEffect(() => {
-//     if (usernameError, passwordError) {
-//       setFormValid(false)
-//     } else {
-//       setFormValid(true)
-//     }
-//   }, [usernameError, passwordError])
-
-//   const handleChangeUsername = (e) => {
-//     setUsername(e.target.value)
-//     setUsername(e.target.value)
-//     if (!e.target.value) {
-//       setUsernameError('username не может быть пустым')
-//     } else {
-//       setUsernameError('')
-//     }
-//   }
-//   const handleChangePassword = (e) => {
-//     setPassword(e.target.value)
-//     if (e.target.value.length < 6) {
-//       setPasswordError('Пароль должен иметь как минимум 6 символов')
-//       if (!e.target.value) {
-//         setPasswordError('Пароль не может быть пустым')
-//       } 
-//     } else {
-//       setPasswordError('')
-//     }
-//   }
-
-//   const handleSubmit = (e) => {
-//     e.preventDefault()
-//     loginUser();
-//   }
-
-//   const handleBlur = (e) => {
-//     switch (e.target.name) {
-//       case 'username':
-//         setUsernameDirty(true)
-//         break;
-//       case 'password':
-//         setPasswordDirty(true)
-//         break;
-//     }
-//   }
-
-//   return (
-//     <div className='login'>
-//         <form onSubmit={handleSubmit}>
-//         <h1>Log in to your account</h1>
-//       <label>
-//         <p>Username or email</p>
-//         {(usernameDirty && usernameError) && <div style={{color: 'red'}}>{usernameError}</div>}
-//         <input name='username' onBlur={handleBlur} type="text" className='username' value={username} onChange={handleChangeUsername}/>
-//       </label>
-//       <label>
-//         <p>Password</p>
-//         {(passwordDirty && passwordError) && <div style={{color: 'red'}}>{passwordError}</div>}
-//         <input name='password' onBlur={handleBlur} type="password" className='password' value={password} onChange={handleChangePassword}/>
-//       </label>
-//       <div>
-//         <button disabled={!formValid} type="submit" className='submit'>Sign in</button>
-//       </div>
-//     </form>
-//     {error ? <div style={{color: 'red'}}>{error}</div> : null}
-//     </div>
-//   )
-// }
-
-// export default Login;
-
-
 import {
   Alert,
   Button,
@@ -127,8 +17,10 @@ import { useAuthContext } from "../../context/AuthContext";
 import useScreenSize from "../../hooks/useScreenSize";
 import { API } from "../../constant";
 import { setToken } from "../../helpers";
+import './Login.scss'
 
 const SignIn = () => {
+
   const { isDesktopView } = useScreenSize();
   const navigate = useNavigate();
 
@@ -139,7 +31,9 @@ const SignIn = () => {
   const [error, setError] = useState("");
 
   const onFinish = async (values) => {
+
     setIsLoading(true);
+    
     try {
       const value = {
         identifier: values.email,
@@ -182,7 +76,7 @@ const SignIn = () => {
             {error ? (
               <Alert
                 className="alert_error"
-                message={error}
+                message='Invalid Email or password'
                 type="error"
                 closable
                 afterClose={() => setError("")}
