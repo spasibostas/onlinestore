@@ -1,17 +1,20 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
-import { store } from "./redux/store";
-import AuthProvider from "./components/AuthProvider/AuthProvider";
-import { Provider } from "react-redux";
+'use strict';
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <AuthProvider>
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </AuthProvider> 
-  </React.StrictMode>
-)
+module.exports = {
+  /**
+   * An asynchronous register function that runs before
+   * your application is initialized.
+   *
+   * This gives you an opportunity to extend code.
+   */
+  register(/*{ strapi }*/) {},
+
+  /**
+   * An asynchronous bootstrap function that runs before
+   * your application gets started.
+   *
+   * This gives you an opportunity to set up your data model,
+   * run jobs, or perform some special logic.
+   */
+  bootstrap(/*{ strapi }*/) {},
+};
